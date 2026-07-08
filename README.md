@@ -1,0 +1,81 @@
+# 🐧 Tux Asistente
+
+Un pequeño Tux flotante para tu escritorio Linux, hecho con **C++** y **Qt6**. Camina solo por la pantalla, te habla de vez en cuando y puedes arrastrarlo con el mouse.
+
+![Licencia](https://img.shields.io/badge/license-GPLv3-blue.svg)
+
+## ✨ Características
+
+- 🖼️ Ventana flotante sin bordes, siempre encima (*always on top*) y con fondo transparente.
+- 🚶 Movimiento autónomo aleatorio cada pocos segundos.
+- 🔄 El sprite se voltea automáticamente según la dirección en la que camina.
+- 💬 Bocadillo de diálogo estilo retro (look clásico gris de interfaz de los 90) con mensajes aleatorios tipo "recuerda tomar agua", "estira la espalda", etc.
+- 🖱️ Arrástralo por la pantalla con clic izquierdo.
+- ❌ Clic derecho para cerrarlo.
+
+## 📦 Requisitos
+
+- CMake ≥ 3.16
+- Compilador con soporte C++17 (GCC, Clang, etc.)
+- Qt6 (componente `Widgets`)
+- Sistema con soporte OpenGL / Vulkan headers / XKB (dependencias típicas de Qt6 en Linux)
+
+## 🔧 Compilación
+
+El proyecto incluye un script que automatiza todo el proceso:
+
+```bash
+./build.sh
+```
+
+Esto va a:
+1. Limpiar y recrear la carpeta `build/`.
+2. Generar el Makefile con CMake.
+3. Compilar el proyecto.
+4. Mover el binario resultante a `bin/tux`.
+
+## ▶️ Ejecución
+
+```bash
+./bin/tux
+```
+
+> **Nota:** el binario busca `tux.png` en el directorio desde el que se ejecuta, así que corre el comando desde la raíz del proyecto (o copia `tux.png` junto al ejecutable).
+
+## 📁 Estructura del proyecto
+
+```
+.
+├── bin/            # Binario compilado (ignorado por git)
+├── build/          # Archivos de build de CMake (ignorado por git)
+├── src/
+│   └── main.cpp    # Lógica principal del asistente
+├── build.sh        # Script de compilación
+├── CMakeLists.txt  # Configuración de CMake
+├── tux.png         # Sprite de Tux
+└── README.md
+```
+
+## ⚙️ Personalización
+
+Dentro de `src/main.cpp` hay algunas variables globales fáciles de ajustar:
+
+| Variable | Descripción |
+|---|---|
+| `speak` | Activa o desactiva los mensajes del bocadillo |
+| `rmove` | Activa o desactiva el movimiento aleatorio |
+| `sizeTux` | Tamaño en píxeles del sprite |
+| `initPosX` / `initPosY` | Posición inicial en pantalla |
+
+También puedes editar la lista `mensajes` para cambiar las frases que dice Tux.
+
+## 🗺️ Ideas a futuro
+
+- [ ] Animaciones de caminado en vez de solo espejar el sprite.
+- [ ] Detección de inactividad del mouse/teclado.
+- [ ] Configuración por archivo externo (JSON/TOML) en vez de constantes en el código.
+- [ ] Empaquetado (AppImage / paquete para distros).
+
+## 📄 Licencia
+
+Este proyecto está licenciado bajo la **GNU General Public License v3.0**. Consulta el archivo [LICENSE](./LICENSE) para más detalles.
