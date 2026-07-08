@@ -1,30 +1,30 @@
-# 🐧 Tux Asistente
+# Tux Asistente
 
 Un pequeño Tux flotante para tu escritorio Linux, hecho con **C++** y **Qt6**. Camina solo por la pantalla, te habla de vez en cuando y puedes arrastrarlo con el mouse.
 
 ![Licencia](https://img.shields.io/badge/license-GPLv3-blue.svg)
 
-## ✨ Características
+## Características
 
-- 🖼️ Ventana flotante sin bordes, siempre encima (*always on top*) y con fondo transparente.
-- 🚶 Cada cierto tiempo, Tux inicia una **caminata**: elige una dirección y una distancia total al azar, y la recorre en varios saltos consecutivos (no un solo salto a un punto fijo).
-- 🐸 Cada paso del recorrido tiene una animación de salto (squash & stretch suave), sin necesidad de un spritesheet nuevo.
-- 🧱 Respeta los bordes de la pantalla: si Tux choca con un borde, corta el recorrido ahí en vez de salirse.
-- 🔄 El sprite se voltea automáticamente según la dirección en la que camina.
-- 💬 Bocadillo de diálogo estilo retro (look clásico gris de interfaz de los 90) con mensajes aleatorios tipo "recuerda tomar agua", "estira la espalda", etc.
-- 🖱️ Arrástralo por la pantalla con clic izquierdo.
-- ❌ Clic derecho para cerrarlo.
+- Ventana flotante sin bordes, siempre encima (*always on top*) y con fondo transparente.
+- Cada cierto tiempo, Tux inicia una **caminata**: elige una dirección y una distancia total al azar, y la recorre en varios saltos consecutivos (no un solo salto a un punto fijo).
+- Cada paso del recorrido tiene una animación de salto (squash & stretch suave), sin necesidad de un spritesheet nuevo.
+- Respeta los bordes de la pantalla: si Tux choca con un borde, corta el recorrido ahí en vez de salirse.
+- El sprite se voltea automáticamente según la dirección en la que camina.
+- Bocadillo de diálogo estilo retro (look clásico gris de interfaz de los 90) con mensajes aleatorios tipo "recuerda tomar agua", "estira la espalda", etc.
+- Arrástralo por la pantalla con clic izquierdo.
+- Clic derecho para cerrarlo.
 
-## 📦 Requisitos
+## Requisitos
 
 - CMake ≥ 3.16
 - Compilador con soporte C++17 (GCC, Clang, etc.)
 - Qt6 (componente `Widgets`)
 - Sistema con soporte OpenGL / Vulkan headers / XKB (dependencias típicas de Qt6 en Linux)
 
-## 🔧 Compilación
+## Compilación
 
-El proyecto incluye un script que automatiza todo el proceso:
+El proyecto incluye un script que automatiza todo el proceso en sistemas tipo Unix:
 
 ```bash
 ./build.sh
@@ -36,15 +36,15 @@ Esto va a:
 3. Compilar el proyecto.
 4. Mover el binario resultante a `bin/tux`.
 
-## ▶️ Ejecución
+## Ejecución
 
 ```bash
 ./bin/tux
 ```
 
-> **Nota:** el binario busca `tux.png` en el directorio desde el que se ejecuta, así que corre el comando desde la raíz del proyecto (o copia `tux.png` junto al ejecutable).
+> **Nota:** el binario busca `tux.png` en el directorio desde el que se ejecuta, así que corre el comando desde la raíz del proyecto (o copia `tux.png` junto al ejecutable, por ejemplo 'cp tux.png bin/tux.png').
 
-## 📁 Estructura del proyecto
+## Estructura del proyecto
 
 ```
 .
@@ -58,7 +58,7 @@ Esto va a:
 └── README.md
 ```
 
-## ⚙️ Personalización
+## Personalización
 
 Dentro de `src/main.cpp` hay algunas variables globales fáciles de ajustar:
 
@@ -82,13 +82,13 @@ También podés ajustar, dentro de la clase `VentanaFlotante`:
 
 También puedes editar la lista `mensajes` para cambiar las frases que dice Tux.
 
-## 🗺️ Ideas a futuro
+## Ideas a futuro
 
 - [x] Animación de caminado (squash & stretch al saltar, sin sprite sheet).
 - [ ] Detección de inactividad del mouse/teclado.
 - [ ] Configuración por archivo externo (JSON/TOML) en vez de constantes en el código.
 - [ ] Empaquetado (AppImage / paquete para distros).
 
-## 📄 Licencia
+## Licencia
 
 Este proyecto está licenciado bajo la **GNU General Public License v3.0**. Consulta el archivo [LICENSE](./LICENSE) para más detalles.
