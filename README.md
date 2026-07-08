@@ -7,7 +7,9 @@ Un pequeño Tux flotante para tu escritorio Linux, hecho con **C++** y **Qt6**. 
 ## ✨ Características
 
 - 🖼️ Ventana flotante sin bordes, siempre encima (*always on top*) y con fondo transparente.
-- 🚶 Movimiento autónomo aleatorio cada pocos segundos.
+- 🚶 Cada cierto tiempo, Tux inicia una **caminata**: elige una dirección y una distancia total al azar, y la recorre en varios saltos consecutivos (no un solo salto a un punto fijo).
+- 🐸 Cada paso del recorrido tiene una animación de salto (squash & stretch suave), sin necesidad de un spritesheet nuevo.
+- 🧱 Respeta los bordes de la pantalla: si Tux choca con un borde, corta el recorrido ahí en vez de salirse.
 - 🔄 El sprite se voltea automáticamente según la dirección en la que camina.
 - 💬 Bocadillo de diálogo estilo retro (look clásico gris de interfaz de los 90) con mensajes aleatorios tipo "recuerda tomar agua", "estira la espalda", etc.
 - 🖱️ Arrástralo por la pantalla con clic izquierdo.
@@ -66,12 +68,23 @@ Dentro de `src/main.cpp` hay algunas variables globales fáciles de ajustar:
 | `rmove` | Activa o desactiva el movimiento aleatorio |
 | `sizeTux` | Tamaño en píxeles del sprite |
 | `initPosX` / `initPosY` | Posición inicial en pantalla |
+| `margenSalto` | Espacio extra arriba de la ventana para que el salto no se recorte |
+
+También podés ajustar, dentro de la clase `VentanaFlotante`:
+
+| Dónde | Qué controla |
+|---|---|
+| `timerMovimiento->start(8000)` | Cada cuánto tiempo decide iniciar una nueva caminata (en ms) |
+| `distanciaTotal` en `decidirCaminata()` | Rango de distancia total del recorrido (actualmente 80–480 px) |
+| `pasoPx` en `decidirCaminata()` | Largo de cada "zancada" del recorrido |
+| `timerCaminata->start(180)` | Tiempo entre cada salto del recorrido (en ms) |
+| `escalas` / `offsetsY` en `animarPaso()` | Intensidad del squash & stretch y la altura del salto |
 
 También puedes editar la lista `mensajes` para cambiar las frases que dice Tux.
 
 ## 🗺️ Ideas a futuro
 
-- [ ] Animaciones de caminado en vez de solo espejar el sprite.
+- [x] Animación de caminado (squash & stretch al saltar, sin sprite sheet).
 - [ ] Detección de inactividad del mouse/teclado.
 - [ ] Configuración por archivo externo (JSON/TOML) en vez de constantes en el código.
 - [ ] Empaquetado (AppImage / paquete para distros).
