@@ -1,5 +1,7 @@
 # 🐧 Tux Asistente
 
+![Un tux flotante](preview.png)
+
 Un pequeño Tux flotante para tu escritorio Linux, hecho con **C++** y **Qt6**. Camina solo por la pantalla, te habla de vez en cuando y puedes arrastrarlo con el mouse.
 
 ![Licencia](https://img.shields.io/badge/license-GPLv3-blue.svg)
